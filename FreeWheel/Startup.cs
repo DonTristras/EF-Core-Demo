@@ -30,7 +30,7 @@ namespace FreeWheel
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connection = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=FreeWheelDB;Integrated Security=True;Connect Timeout=30";
+            var connection = Configuration.GetSection("ConnectionString").Value;
             services.AddDbContext<FreeWheelContext>
                 (options => options.UseSqlServer(connection));
         }
